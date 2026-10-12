@@ -1,0 +1,11 @@
+# Examining Lock Contention and Performance
+
+The original banking design uses separate account locks so that transactions involving unrelated accounts are not restricted by the same mutex. Although this was a reasonable design choice, I had not established whether it offered a measurable performance advantage as concurrency increased. To investigate this, I compared transactions concentrated on one shared account with an equivalent workload distributed across independent accounts.
+
+The extended experiment performed 1.2 million deposit and withdrawal operations per trial, using between one and thirty-two threads with five repetitions for each configuration. Median execution times ranged from 0.8068 to 0.9020 seconds, with neither arrangement showing a consistent advantage. All trials completed without the benchmark detecting an incorrect final balance.
+
+These results made me reconsider how I had previously interpreted the benefits of per-account locking. Separate locks reduce direct competition for account-level resources, but that advantage was not clearly reflected in the measured throughput. The GIL-enabled CPython interpreter may partly explain this, since it limits parallel execution of Python bytecode, although thread scheduling and measurement variation could also have influenced the results.
+
+I would be cautious about interpreting the relatively small differences as evidence of one arrangement being more efficient. Five repetitions provide an initial comparison, but the variation between individual runs still needs examining, particularly as the experiment used Python 3.15.0a6, an alpha release.
+
+What I find more useful is the distinction emerging between preserving transaction integrity and improving execution speed. The expected balances were maintained across the tested workloads, yet increasing the number of threads offered no sustained performance improvement. Further testing with a stable Python release and closer examination of timing variability would help determine whether this pattern persists, while allowing the choice of synchronisation strategy to be assessed against the demands of the workload rather than its theoretical advantages alone.
