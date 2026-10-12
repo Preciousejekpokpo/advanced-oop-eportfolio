@@ -10,8 +10,10 @@ class TransactionSimulator:
     """
     Simulate several users accessing the same bank account concurrently.
 
-    Each user follows the same transaction pattern so the expected final
-    balance can be calculated and checked after the simulation.
+    Each user follows a fixed pattern of deposits and withdrawals so the
+    expected final balance can be calculated in advance. Comparing expected
+    and actual balances provides evidence that concurrent operations preserve
+    the expected account state in this simulation.
     """
 
     def __init__(
@@ -28,12 +30,16 @@ class TransactionSimulator:
         self.operations_per_user = operations_per_user
 
     def _user_session(self) -> None:
-        """Run one user's sequence of deposits and withdrawals."""
+        """
+        Run one user's sequence of deposits and withdrawals.
+
+        Each user session runs in its own thread and shares the same BankAccount
+        instance with the other users. The alternating pattern creates
+        contention while keeping the expected final balance easy to calculate.
+        """
         amount = Decimal("10")
 
         for operation in range(self.operations_per_user):
-            # Alternating equal deposits and withdrawals makes the expected
-            # balance easy to calculate after all users have finished.
             if operation % 2 == 0:
                 self.account.deposit(amount)
             else:
@@ -43,8 +49,8 @@ class TransactionSimulator:
         """
         Start all user threads, wait for them, and return the final balance.
 
-        A separate thread represents each simulated user accessing the shared
-        BankAccount instance.
+        One thread represents each simulated user. All threads finish before
+        the balance is read so no simulated operations remain in progress.
         """
         threads = []
 
@@ -56,7 +62,6 @@ class TransactionSimulator:
             threads.append(thread)
             thread.start()
 
-        # The final balance is only checked after every user has finished.
         for thread in threads:
             thread.join()
 
@@ -65,16 +70,27 @@ class TransactionSimulator:
 
 if __name__ == "__main__":
     starting_balance = Decimal("1000")
+    num_users = 10
+    operations_per_user = 100
+    transaction_amount = Decimal("10")
+
     account = BankAccount("ACC_DEMO", starting_balance)
 
     simulator = TransactionSimulator(
         account,
-        num_users=10,
-        operations_per_user=100,
+        num_users=num_users,
+        operations_per_user=operations_per_user,
     )
 
     final_balance = simulator.run()
 
-    print(f"Starting balance:      £{starting_balance}")
-    print(f"Expected final balance: £{starting_balance}")
+    deposits_per_user = (operations_per_user + 1) // 2
+    withdrawals_per_user = operations_per_user // 2
+
+    expected_final_balance = starting_balance + (
+        num_users * (deposits_per_user - withdrawals_per_user) * transaction_amount
+    )
+
+    print(f"Starting balance:       £{starting_balance}")
+    print(f"Expected final balance: £{expected_final_balance}")
     print(f"Actual final balance:   £{final_balance}")
