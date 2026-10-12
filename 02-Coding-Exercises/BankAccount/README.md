@@ -1,29 +1,38 @@
-
 # Thread-Safe Banking System
 
-## Project Overview
+## Overview
 
-This project examines how object-oriented programming and concurrency control can be used to maintain account integrity when multiple users perform banking transactions simultaneously.
+The initial concurrency test produced the expected balance of 5,000 after ten threads completed 500 deposits each, although this result raised questions about how much of the account's behaviour had actually been tested. Deposits could reveal lost updates, but competing withdrawals presented a different concern, particularly when several threads attempted to access funds that could not satisfy every request. This shaped my approach to testing, placing greater emphasis on whether the account preserved its financial constraints under concurrent execution.
 
-The implementation consists of three Python files:
+I separated account management, simulation and testing into three modules, keeping synchronisation within `BankAccount` through per-account locks. The withdrawal check and deduction share one critical section, while transfers acquire two account locks in a consistent order using account numbers and object identity to address circular waiting.
 
-- `bank_account.py` – manages deposits, withdrawals, transfers and account balances.
-- `transaction_simulator.py` – simulates concurrent banking operations using Python threads.
-- `test_bank_account.py` – tests account operations, input validation and concurrent behaviour.
+The twelve tests covered transaction validation, concurrent deposits, contested withdrawals and transfers, with all tests passing and the simulator returning £1,000 as expected. Although barriers increased contention, the results remain specific to the scenarios examined rather than establishing correctness under every possible thread schedule.
 
-## Design Approach
+The [Part A report](Thread%20Safe%20Banking%20System%20Report-%20submission.docx) contains the original methodology, diagrams, design decisions and critical evaluation.
 
-The project applies encapsulation, input validation and thread synchronisation to protect shared account state. A consistent lock acquisition order is used for transfers to reduce the risk of deadlock.
+## Code and Supporting Evidence
 
-## Running the Project
+| File | Contents |
+|---|---|
+| [bank_account.py](bank_account.py) | Account operations and synchronisation |
+| [transaction_simulator.py](transaction_simulator.py) | Concurrent transaction simulation |
+| [test_bank_account.py](test_bank_account.py) | Twelve unit and concurrency tests |
+| [Part A report](Thread%20Safe%20Banking%20System%20Report-%20submission.docx) | Design, testing and evaluation |
 
-From the project directory, run:
+## Running the Code
 
-```bash
-python -m unittest test_bank_account.py -v
-```
+Run the tests from the project directory.
 
-## Critical Evaluation
+`python -m unittest -v test_bank_account.py`
 
-Thread synchronisation supports correctness but may introduce contention when many users access the same account. The implementation is an educational simulation rather than a production banking system. Further evaluation will consider scalability, transaction persistence and recovery from failures.
-  
+Run the simulation.
+
+`python transaction_simulator.py`
+
+No external packages are required.
+
+## Further Investigation
+
+The lecturer's feedback brought the unresolved scalability question into sharper focus, particularly whether per-account locking remains efficient as contention increases. I intend to compare workloads concentrated on one account with those distributed across several, while examining how mutable account identifiers affect transfer ordering.
+
+The simulator's fixed transaction sequence also provides a reason to investigate Strategy, although its value will depend on whether the added flexibility improves testing and maintainability enough to justify another abstraction.
