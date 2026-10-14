@@ -1,11 +1,19 @@
 # Examining Lock Contention and Performance
 
-The original banking design uses separate account locks so that transactions involving unrelated accounts are not restricted by the same mutex. Although this was a reasonable design choice, I had not established whether it offered a measurable performance advantage as concurrency increased. To investigate this, I compared transactions concentrated on one shared account with an equivalent workload distributed across independent accounts.
+![Figure 2. Shared and separate account execution times across sixty benchmark trials](contention_graph.png)
 
-The extended experiment performed 1.2 million deposit and withdrawal operations per trial, using between one and thirty-two threads with five repetitions for each configuration. Median execution times ranged from 0.8068 to 0.9020 seconds, with neither arrangement showing a consistent advantage. All trials completed without the benchmark detecting an incorrect final balance.
+Figure 2 examines the assumption that separate account locks would reduce contention and improve performance when transactions operate on unrelated accounts. The benchmark compared 1.2 million operations per trial across shared and separate accounts, using one to thirty-two threads and five repetitions per configuration. However, fluctuating median times and overlapping trial ranges reveal no consistent advantage for either arrangement. Although separate locks reduce competition for account-level resources, this was not reflected in sustained performance gains.
 
-These results made me reconsider how I had previously interpreted the benefits of per-account locking. Separate locks reduce direct competition for account-level resources, but that advantage was not clearly reflected in the measured throughput. The GIL-enabled CPython interpreter may partly explain this, since it limits parallel execution of Python bytecode, although thread scheduling and measurement variation could also have influenced the results.
+All trials preserved the expected balances, supporting the correctness of concurrent updates under these conditions. However, this offers limited evidence of scalability, as increasing thread counts produced no consistent throughput improvement. Kalibera and Jones (2013) emphasise measurement variability, particularly relevant given the five repetitions and sub-second execution times. The fixed workload also limits conclusions about growing transaction volumes. The GIL-enabled CPython interpreter may have constrained parallel execution, although its influence cannot be isolated. Using Python 3.15.0a6, an alpha release, further limits generalisability.
 
-I would be cautious about interpreting the relatively small differences as evidence of one arrangement being more efficient. Five repetitions provide an initial comparison, but the variation between individual runs still needs examining, particularly as the experiment used Python 3.15.0a6, an alpha release.
+The findings support retaining per-account locking for balance protection without assuming a performance advantage. Repeating the experiment on stable Python, with more trials, comparison against free-threaded execution and closer examination of timing variation, would provide stronger evidence of its suitability under heavier workloads.
 
-What I find more useful is the distinction emerging between preserving transaction integrity and improving execution speed. The expected balances were maintained across the tested workloads, yet increasing the number of threads offered no sustained performance improvement. Further testing with a stable Python release and closer examination of timing variability would help determine whether this pattern persists, while allowing the choice of synchronisation strategy to be assessed against the demands of the workload rather than its theoretical advantages alone.
+## Evidence
+
+- [Benchmark implementation](benchmark_contention.py)
+- [Extended dataset with 60 trials](contention_results_extended.csv)
+- [Earlier dataset](contention_results.csv)
+
+## References
+
+Kalibera, T. and Jones, R.E. (2013) ‘Rigorous benchmarking in reasonable time’, *Proceedings of the ACM SIGPLAN International Symposium on Memory Management*. Available at https://doi.org/10.1145/2464157.2464160 (Accessed 14 October 2026).
