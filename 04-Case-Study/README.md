@@ -1,11 +1,9 @@
-# Case Study
+# Case Study: Transaction Evidence and Architectural Trade-offs
 
-This folder contains my case study work.
+The case study examines a weakness that emerged when transaction recording was added to the thread-safe banking system. It considers how incomplete records affect verification and whether the capstone's additional checks provide sufficient assurance.
 
-It will include:
+## Evidence
 
-- Architecture decisions
-- Design patterns used
-- Challenges encountered
-- Testing strategy
-- Reflection
+- [Case study analysis](CASE_STUDY.md)
+- [Capstone architecture and evaluation](../05-Capstone-Project/CAPSTONE_EVALUATION.md)
+- [Capstone integration tests](../02-Coding-Exercises/BankAccount/test_capstone_workflow.py)
