@@ -4,7 +4,7 @@ The banking assignment gave me experience of protecting shared state and testing
 
 Figure 1 translates those gaps into specific actions and measures. SFIA 9 provides benchmarks for testing, design and assurance without implying I have achieved an assessed competence level (SFIA Foundation, 2024). The BCS Code of Conduct also guides how I report limitations and respond to professional criticism (BCS, n.d.).
 
-![Figure 1. Professional development roadmap showing current evidence, identified gaps, actions, success measures and target dates](Task%204%20Professional%20Development%20Plan.png)
+![Figure 1. Professional development roadmap showing current evidence, identified gaps, actions, success measures and target dates](task4_professional_development_roadmap%20%283%29.png)
 
 I want the boundary tests to inform recovery experiments before extending model review. Monthly checks will examine completed evidence, unexpected failures and feedback from the planned peer reviews. Meeting a deadline alone would say little about whether the underlying weakness had been addressed.
 
