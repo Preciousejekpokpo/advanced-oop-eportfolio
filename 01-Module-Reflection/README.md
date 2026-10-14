@@ -1,12 +1,9 @@
-# Module Reflection
+# Module Learning Outcomes and Reflection
 
-This folder contains my weekly reflections throughout the Advanced Object-Oriented Design and Programming module.
+This section examines how the banking exercises, design-pattern implementations and capstone project developed my approach to software engineering. The learning-outcomes discussion considers the decisions I made, the limitations identified through testing and how those findings influence my future approach to secure and maintainable design.
 
-Each reflection will document:
+## Supporting evidence
 
-- What I learned
-- Practical activities completed
-- Challenges encountered
-- How I overcame them
-- Links between theory and practice
-- Skills developed
+- [Task 1 Learning Outcomes](LEARNING_OUTCOMES.md)
+- [Banking implementation and evaluations](../02-Coding-Exercises/BankAccount/README.md)
+- [Capstone evaluation](../05-Capstone-Project/CAPSTONE_EVALUATION.md)
