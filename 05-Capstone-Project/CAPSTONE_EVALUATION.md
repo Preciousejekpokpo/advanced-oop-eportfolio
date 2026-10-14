@@ -1,22 +1,20 @@
-# Capstone: Evaluating AI-Aware Transaction Verification
+# Capstone – Evaluating AI-Aware Transaction Verification
 
-Developing `CapstoneWorkflow` exposed how easily a modular design can appear more dependable than the evidence it processes. Abstract Factory assembles compatible scenarios, Strategy varies workloads, Decorator records attempts and Visitor summarises their effects. Their separation made integration possible without rewriting `BankAccount`, although each downstream check still trusts the recording wrapper. Prechelt et al. (2001) found that patterns sometimes complicate maintenance compared with simpler alternatives. I would retain these abstractions for their demonstrated testing flexibility, rather than assume that additional classes improve assurance.
+The capstone brought the earlier design patterns together to examine whether additional checks could improve the reliability of transaction evidence before model review.The architecture diagram in the capstone README illustrates how CapstoneWorkflow coordinates these components without changing the original account logic. Their separation supports reuse, but each verification stage still depends on the accuracy of the records it receives.
 
-The new count check detected an unrecorded £25 deposit and withdrawal whose effects cancelled, withholding model advice where balance reconciliation alone had passed. Seven integration tests passed, bringing the local suite to 72 in 0.043 seconds. A second experiment was more troubling. Replacing both £25 records with £10 records preserved their count and net movement, so the mocked model was consulted. Barr et al. (2015) discuss the difficulty of choosing adequate test oracles. My assertions verified the workflow's rules, while revealing that those rules could accept misleading evidence.
+Seven integration tests passed, bringing the local banking suite to 72 tests. The additional record-count check detected an unrecorded £25 deposit and withdrawal whose effects cancelled, withholding model advice where balance reconciliation alone had passed. However, replacing both £25 records with £10 records preserved their count and net movement, allowing the mocked model to be consulted. The improvement therefore detects some missing records without establishing that recorded amounts are accurate.
 
-I would prioritise an authoritative event record, transaction identifiers and coordinated balance-and-record updates before broadening AI integration. PostgreSQL Global Development Group (n.d.) explains why related updates need an all-or-nothing boundary, but adopting durable storage would require recovery and contention tests. Tabassi (2023) also locates AI reliability within wider governance and evaluation. Mocked advisory responses cannot establish model accuracy, and the prototype has not demonstrated deployment-scale performance.
+Barr et al. (2015) examine the difficulty of establishing adequate test oracles. The passing tests confirmed the workflow's expected responses while demonstrating that misleading evidence could satisfy its checks. This limits the assurance gained from integrating otherwise well-tested components.
+
+An authoritative transaction history and coordinated balance-and-record updates would provide stronger foundations for verification (PostgreSQL Global Development Group, n.d.). Recovery, performance and live-model behaviour remain untested. Until those gaps are addressed, model output should remain advisory.
 
 ## Evidence
 
-- [Workflow](../02-Coding-Exercises/BankAccount/capstone_workflow.py)
-- [Integration tests](../02-Coding-Exercises/BankAccount/test_capstone_workflow.py)
+- [Capstone workflow](../02-Coding-Exercises/BankAccount/capstone_workflow.py)
+- [Seven integration tests](../02-Coding-Exercises/BankAccount/test_capstone_workflow.py)
 
 ## References
 
-Barr, E.T., Harman, M., McMinn, P., Shahbaz, M. and Yoo, S. (2015) ‘The oracle problem in software testing: A survey’, *IEEE Transactions on Software Engineering*, 41(5), pp. 507–525. Available at: https://doi.org/10.1109/TSE.2014.2372785 (Accessed: 14 October 2026).
+Barr, E.T., Harman, M., McMinn, P., Shahbaz, M. and Yoo, S. (2015) ‘The oracle problem in software testing: A survey’, *IEEE Transactions on Software Engineering*, 41(5), pp. 507–525. Available at https://doi.org/10.1109/TSE.2014.2372785 (Accessed 14 October 2026).
 
-PostgreSQL Global Development Group (n.d.) ‘3.4 Transactions’, *PostgreSQL 17 Documentation*. Available at: https://www.postgresql.org/docs/17/tutorial-transactions.html (Accessed: 14 October 2026).
-
-Prechelt, L., Unger, B., Tichy, W.F., Brössler, P. and Votta, L.G. (2001) ‘A controlled experiment in maintenance: Comparing design patterns to simpler solutions’, *IEEE Transactions on Software Engineering*, 27(12), pp. 1134–1144. Available at: https://doi.org/10.1109/32.988711 (Accessed: 14 October 2026).
-
-Tabassi, E. (2023) *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. NIST AI 100-1. National Institute of Standards and Technology. Available at: https://doi.org/10.6028/NIST.AI.100-1 (Accessed: 14 October 2026).
+PostgreSQL Global Development Group (n.d.) ‘3.4 Transactions’, *PostgreSQL 17 Documentation*. Available at https://www.postgresql.org/docs/17/tutorial-transactions.html (Accessed 14 October 2026).
