@@ -1,19 +1,13 @@
 # Thread-Safe Banking System
 
-The original banking assignment examined how concurrent transactions could preserve account balances without lost updates, overspending or deadlocks. I separated account management, simulation and testing, keeping synchronisation within `BankAccount`. The withdrawal check and deduction share one critical section, while transfers acquire both account locks in a consistent order to reduce circular waiting.
+The original assignment separated account management, concurrent simulation and testing to make the locking decisions visible. `BankAccount` protects the withdrawal check and deduction in one critical section, while transfers acquire both account locks in a consistent order. Twelve tests passed, although no finite set of concurrent runs can establish correctness under every thread schedule.
 
-Twelve tests passed, including 5,000 concurrent deposits, twenty competing £10 withdrawals from a £100 balance and opposing transfers. Exactly ten withdrawals succeeded, while both transfer threads completed within five seconds. These results supported the locking decisions, although the barriers used to increase contention could not reproduce every possible thread schedule.
-
-## Further Investigation
-
-The lecturer's feedback brought the unresolved scalability question into sharper focus, particularly whether per-account locking would remain effective as contention increased. I explored this through comparisons of shared and separate accounts, finding no consistent performance advantage. The simulator's fixed transaction sequence also prompted the Strategy extension, although its flexibility came with additional abstraction. Mutable account identifiers and incomplete worker-error reporting remain concerns. I want to examine these weaknesses more closely before judging how reliably the design could support less controlled workloads.
+The lecturer's feedback brought the unresolved scalability question into sharper focus, particularly how per-account locking would behave under contention. My later experiments found no sustained advantage for separate accounts, while the fixed transaction sequence prompted the Strategy extension. Both investigations grew from limitations in the original design, and the linked evaluations examine what the tests still cannot establish.
 
 ## Original Part A Artefacts
 
-- [Previously submitted technical report, including diagrams and evaluation](Thread%20Safe%20Banking%20System%20Report-%20submission.docx)
-- [Bank account implementation](bank_account.py)
-- [Transaction simulator](transaction_simulator.py)
-- [Original twelve tests](test_bank_account.py)
+- [Previously submitted report, diagrams and evaluation](Thread%20Safe%20Banking%20System%20Report-%20submission.docx)
+- [Account implementation](bank_account.py), [simulator](transaction_simulator.py) and [twelve tests](test_bank_account.py)
 
 ## Subsequent Investigations
 
@@ -21,4 +15,4 @@ The lecturer's feedback brought the unresolved scalability question into sharper
 - [Contention evaluation](CONTENTION_EVALUATION.md)
 - [Strategy](STRATEGY_EVALUATION.md), [Decorator](DECORATOR_EVALUATION.md), [Visitor](VISITOR_EVALUATION.md) and [Abstract Factory](ABSTRACT_FACTORY_EVALUATION.md)
 
-Run the original tests from this folder using `python -m unittest -v test_bank_account.py`.
+Run the original tests using `python -m unittest -v test_bank_account.py`.
