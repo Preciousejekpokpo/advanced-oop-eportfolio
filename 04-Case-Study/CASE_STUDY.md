@@ -4,4 +4,4 @@ The original banking tests established balance protection under the tested condi
 
 Subsequent checks revealed further weaknesses. Reconciliation missed two unrecorded movements that cancelled, while the capstone's count check accepted substituted amounts. Both could report agreement without establishing whether individual transactions were accurately recorded, since the evidence itself remained unreliable.
 
-I would prioritise atomic, durable balance-and-record updates and failure-recovery testing before introducing further review layers. These remain proposals rather than implemented safeguards.The [capstone evaluation](../05-Capstone-Project/CAPSTONE_EVALUATION.md) examines the checks in detail. examines the checks in detail.
+I would prioritise atomic, durable balance-and-record updates and failure-recovery testing before introducing further review layers. These remain proposals rather than implemented safeguards. The [capstone evaluation](../05-Capstone-Project/CAPSTONE_EVALUATION.md) examines the checks in detail.
