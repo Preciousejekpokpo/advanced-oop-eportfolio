@@ -1,12 +1,12 @@
 # Capstone – Evaluating AI-Aware Transaction Verification
 
-The capstone brought the earlier design patterns together to examine whether additional checks could improve the reliability of transaction evidence before model review. The architecture diagram in the [capstone README](README.md) illustrates how `CapstoneWorkflow` coordinates these components without changing the original account logic. Their separation supports reuse, but each verification stage still depends on the accuracy of the records it receives.
+The capstone followed a weakness exposed during model-review testing. An unrecorded deposit and withdrawal could cancel financially, allowing reconciliation to pass despite missing evidence. `CapstoneWorkflow` integrated the earlier patterns and added a record-count check before requesting model advice, as shown in the [architecture diagram](README.md).
 
-Seven integration tests passed, bringing the local banking suite to 72 tests. The additional record-count check detected an unrecorded £25 deposit and withdrawal whose effects cancelled, withholding model advice where balance reconciliation alone had passed. However, replacing both £25 records with £10 records preserved their count and net movement, allowing the mocked model to be consulted. The improvement therefore detects some missing records without establishing that recorded amounts are accurate.
+Seven integration tests passed, bringing the reported banking suite to 72. The check detected an unrecorded £25 deposit and withdrawal that reconciliation had missed. Yet replacing both £25 records with £10 entries preserved their count and net movement, allowing mocked model review. Counting entries establishes their quantity, not whether they represent the transactions performed. The workflow still relies on records produced by the mechanism whose reliability was in question.
 
-Barr et al. (2015) examine the difficulty of establishing adequate test oracles. The passing tests confirmed the workflow's expected responses while demonstrating that misleading evidence could satisfy its checks. This limits the assurance gained from integrating otherwise well-tested components.
+Barr et al. (2015) examine the difficulty of establishing adequate test oracles. Here, passing tests confirmed the workflow's specified responses while showing that inaccurate evidence could satisfy its checks. Recording exceptions stopped the workflow without reversing completed balance updates. Invalid model responses required manual review, although no operational review process was tested. These safeguards restrict access to model advice without resolving the underlying inconsistency.
 
-An authoritative transaction history and coordinated balance-and-record updates would provide stronger foundations for verification (PostgreSQL Global Development Group, n.d.). Recovery, performance and live-model behaviour remain untested. Until those gaps are addressed, model output should remain advisory.
+An authoritative transaction history with coordinated, durable balance-and-record updates would address that failure boundary (PostgreSQL Global Development Group, n.d.). Recovery, performance and live-model behaviour remain untested. Until transaction evidence can be independently verified, model recommendations should remain advisory.
 
 ## Evidence
 
