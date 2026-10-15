@@ -1,12 +1,14 @@
 # Task 4 Professional Development Plan
 
-Developing the banking system gave me practical experience in managing shared state, while the later contention and recording experiments broadened my understanding of how software reliability should be evaluated. I want to develop towards application security and software assurance, assessing controls through evidence that others can reproduce and question.
+Building the banking system demonstrated my ability to protect shared state, but later recording failures exposed weaknesses that correct balances could not reveal. I want to develop towards application security and software assurance, where reliability needs independently verifiable and recoverable evidence.
 
-Figure 1 connects my current skills and limitations to measurable actions. SFIA 9 guides these priorities without implying an assessed competence level (SFIA Foundation, 2024), while the BCS Code of Conduct informs my professional judgement (BCS, n.d.). Alongside the planned boundary tests, I intend to study the ISTQB Foundation Level syllabus to strengthen my test-design methods (ISTQB, 2024). NIST's Secure Software Development Framework will also guide my evaluation of the proposed SQLite recovery prototype (NIST, 2022).
+Figure 1 turns these findings into practical goals. Boundary tests and repeatable contention trials precede a proposed SQLite prototype for atomic balance-and-record updates. Input-tracing exercises and external code reviews would then improve my evaluation of AI-related evidence and communication of design decisions. These are proposals, not implemented safeguards.
+
+SFIA 9 informs these priorities without implying assessed competence (SFIA Foundation, 2024), while the BCS Code of Conduct guides professional accountability (BCS, n.d.). I will use the ISTQB Foundation Level syllabus to strengthen test design (ISTQB, 2024) and NIST's SSDF to guide secure development (NIST, 2022).
 
 ![Figure 1. Professional development roadmap showing current evidence, identified gaps, actions, success measures and target dates](task4_professional_development_roadmap%20%283%29.png)
 
-I will review progress monthly, examining failed tests, completed evidence and feedback from future technical reviews. Meeting deadlines alone would not establish whether the weaknesses identified in my earlier work have been addressed.
+I will review progress monthly against the roadmap's success measures. Reproducible results, recorded failures and responses to feedback matter more than meeting deadlines alone.
 
 ## References
 
