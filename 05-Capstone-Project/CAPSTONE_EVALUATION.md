@@ -1,12 +1,12 @@
 # Capstone – Evaluating AI-Aware Transaction Verification
 
-The capstone followed a weakness exposed during model-review testing. An unrecorded deposit and withdrawal could cancel financially, allowing reconciliation to pass despite missing evidence. `CapstoneWorkflow` integrated the earlier patterns and added a record-count check before requesting model advice, as shown in the [architecture diagram](README.md).
+The capstone followed a weakness exposed during model-review testing. An unrecorded deposit and withdrawal could cancel financially, allowing reconciliation to pass despite missing evidence. I brought the earlier patterns together in `CapstoneWorkflow` and added a record-count check before model advice, as shown in the [architecture diagram](README.md).
 
-Seven integration tests passed, bringing the reported banking suite to 72. The check detected an unrecorded £25 deposit and withdrawal that reconciliation had missed. Yet replacing both £25 records with £10 entries preserved their count and net movement, allowing mocked model review. Counting entries establishes their quantity, not whether they represent the transactions performed. The workflow still relies on records produced by the mechanism whose reliability was in question.
+Seven integration tests passed, bringing the reported banking suite to 72. The new check detected two missing £25 records that balance reconciliation overlooked. Yet when £10 records replaced both £25 entries, the count and net movement still matched, allowing mocked model review. This exposed a harder problem than missing evidence. The workflow could count records, but could not establish whether they represented the operations performed.
 
-Barr et al. (2015) examine the difficulty of establishing adequate test oracles. Here, passing tests confirmed the workflow's specified responses while showing that inaccurate evidence could satisfy its checks. Recording exceptions stopped the workflow without reversing completed balance updates. Invalid model responses required manual review, although no operational review process was tested. These safeguards restrict access to model advice without resolving the underlying inconsistency.
+Barr et al. (2015) examine the test oracle problem, relevant here because passing assertions confirmed the rules worked while exposing how little they verified. Failure handling remained uneven. Invalid model responses prompted manual review, but a recording exception stopped the workflow after a deposit had already changed the balance. Retrying might duplicate that deposit, although no recovery or retry was tested.
 
-An authoritative transaction history with coordinated, durable balance-and-record updates would address that failure boundary (PostgreSQL Global Development Group, n.d.). Recovery, performance and live-model behaviour remain untested. Until transaction evidence can be independently verified, model recommendations should remain advisory.
+I would retain the count check as a diagnostic rather than treat it as reconciliation. Coordinated, durable balance-and-record updates (PostgreSQL Global Development Group, n.d.) and independent transaction-level verification should take priority, followed by recovery testing. Those measures and live-model behaviour remain untested.
 
 ## Evidence
 
