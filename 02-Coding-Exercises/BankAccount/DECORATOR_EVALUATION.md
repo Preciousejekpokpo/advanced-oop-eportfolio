@@ -1,14 +1,12 @@
 # Decorator and the Integrity of Transaction Records
 
-The account locks in Part A protected balances during concurrent transactions, but provided no way of tracing those operations afterwards. I introduced `RecordingAccount` using the Decorator approach described by Gamma et al. (1994), allowing transaction recording without changing the original account methods. Although this separated responsibilities, recording took place only after the account operation had completed.
+The original banking tests showed that concurrent balance updates were protected under the tested conditions, but left individual operations difficult to trace. I introduced `RecordingAccount` through Decorator, extending the account without changing its financial logic (Gamma et al., 1994). Yet recording followed the balance update, placing the operation and its evidence on separate failure paths.
 
-The initial ten tests passed, including 2,000 deposits across eight threads. However, the failure tests raised a more difficult question about what those results established. When I forced `_append()` to fail after a £25 deposit, the balance increased from £100 to £125 without a corresponding record. More concerning was that the caller received an exception even though the deposit had succeeded. Featonby (2021) examines the risks of retrying operations when their outcome is uncertain. Here, retrying could duplicate the deposit, although my test established the uncertainty rather than demonstrating an actual retry.
+Ten functional tests passed, including 2,000 deposits across eight threads. These demonstrated successful recording under the tested conditions, but failure injection revealed a different outcome. When `_append()` failed after a £25 deposit, the balance rose from £100 to £125 without a record, while the caller received an exception. Featonby (2021) examines retry risks when outcomes are uncertain. Repeating the deposit could duplicate its effect, although the test did not attempt a retry.
 
-Another test showed that two wrappers sharing one account maintained separate histories. Transfers exposed a related limitation because only the source wrapper recorded their outcome. These findings made me question the value of protecting the record list against concurrent updates when its completeness could not be established.
+Further tests showed that separate wrappers around one account held incomplete individual histories, while transfers appeared only in the source wrapper. Protecting each record list against concurrent modification did not make either history authoritative. The weakness lay in the relationship between the financial operation and its evidence, rather than simply in thread safety.
 
-The difficulty lies in the boundary introduced by the design. Decorator allowed me to extend the account without altering its financial logic, but the balance and its record could succeed or fail independently. PostgreSQL's transaction model illustrates why related updates require a shared atomic boundary (PostgreSQL Global Development Group, n.d.). Transaction identifiers could help distinguish retries, but would not recover missing records, while persistent storage alone would leave the underlying inconsistency unresolved.
-
-I would retain Decorator for optional extensions, but not rely on this implementation for financial reconciliation. Establishing coordinated, durable balance-and-record updates would take priority over expanding a reporting layer whose evidence may already be incomplete.
+PostgreSQL's transaction model illustrates the value of committing related updates atomically (PostgreSQL Global Development Group, n.d.). Persistent storage alone would not resolve this inconsistency, while transaction identifiers could help identify retries without recovering missing records. I would retain Decorator for supplementary recording, but not treat this wrapper as a reliable audit trail. Coordinated, durable balance-and-record updates, supported by failure and recovery testing, would be needed before its records could support financial reconciliation.
 
 ## Evidence
 
@@ -19,8 +17,8 @@ I would retain Decorator for optional extensions, but not rely on this implement
 
 ## References
 
-Featonby, M. (2021) ‘Making retries safe with idempotent APIs’, *Amazon Builders’ Library*. Available at: https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/ (Accessed: 13 October 2026).
+Featonby, M. (2021) ‘Making retries safe with idempotent APIs’, *Amazon Builders’ Library*. Available at https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/ (Accessed 13 October 2026).
 
-Gamma, E., Helm, R., Johnson, R. and Vlissides, J. (1994) *Design Patterns: Elements of Reusable Object-Oriented Software*. 1st edn. Addison-Wesley Professional. Available at: https://www.pearson.com/en-gb/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480/9780201633610 (Accessed: 13 October 2026).
+Gamma, E., Helm, R., Johnson, R. and Vlissides, J. (1994) *Design Patterns: Elements of Reusable Object-Oriented Software*. 1st edn. Addison-Wesley Professional. Available at https://www.pearson.com/en-gb/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480/9780201633610 (Accessed 13 October 2026).
 
-PostgreSQL Global Development Group (n.d.) ‘3.4 Transactions’, *PostgreSQL 17 Documentation*. Available at: https://www.postgresql.org/docs/17/tutorial-transactions.html (Accessed: 13 October 2026).
+PostgreSQL Global Development Group (n.d.) ‘3.4 Transactions’, *PostgreSQL 17 Documentation*. Available at https://www.postgresql.org/docs/17/tutorial-transactions.html (Accessed 13 October 2026).
