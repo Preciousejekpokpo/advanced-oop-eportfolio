@@ -1,19 +1,20 @@
-# Strategy and the Cost of Interchangeable Transaction Behaviour
+# Visitor and the Reliability of Financial Reporting
 
-The original simulator fixed each user to alternating deposits and withdrawals, so examining a different workload required editing `_user_session()`. I introduced `TransactionStrategy` to separate transaction choice from thread management. `AlternatingTransactions` and `DepositOnlyTransactions` implement `apply()`, while `StrategySimulator` allows workloads to change between runs without modifying `BankAccount` (Gamma et al., 1994).
+Decorator made transaction records available, but reporting still risked becoming coupled to recording. I used `CashFlowVisitor` and `FailedAttemptVisitor` to analyse the same snapshot without changing account operations (Gamma et al., 1994). Twelve tests passed, covering withdrawals, dispatch and snapshot behaviour.
 
-Seven tests passed, covering policy switching, invalid inputs, concurrent deposits and worker failures. Unlike the original simulator, worker exceptions now reach the caller. That makes interrupted runs visible but cannot reverse transactions completed before a failure. The simulator also takes a snapshot of the chosen strategy for each run. However, sharing a strategy with mutable internal state could introduce new concurrency risks, which I have not tested.
+After `_append()` failed following a £25 deposit, the cash-flow report showed no movement although the balance increased. The test exposed a discrepancy, not the missing event. A £15 transfer also increased the destination balance without appearing in its report. Wang and Strong (1996) examine data quality in relation to its use. These reports calculated available records correctly without establishing completeness. Later model-review tests showed that opposing missing movements could cancel and pass reconciliation.
 
-Prechelt et al. (2001) found maintenance benefits for patterns in most examined tasks, although simpler approaches sometimes performed better. With only two stateless policies, a callable might provide comparable flexibility with less complexity. I would retain Strategy for comparing workloads independently of threading, but reconsider the abstraction if policies remain simple. Investigating recovery after worker failures is more important than adding further strategies.
+`TransactionRecord` lacks `accept()`, requiring entry adapters and dispatch. A new operation such as a refund would need changes across visitors, and ordinary functions might suffice for only two reports. Using one record snapshot supports consistent reporting between visitors, but the snapshot is not atomic with account balances. I would retain Visitor for expanding report types while treating its results as dependent on unverified transaction evidence.
 
 ## Evidence
 
-- [Strategy implementation](strategy_simulator.py)
-- [Strategy tests](test_strategy_simulator.py)
-- [Original simulator](transaction_simulator.py)
+- [Visitor implementation](transaction_visitors.py)
+- [Twelve Visitor tests](test_transaction_visitors.py)
+- [Decorator failure-mode tests](test_recording_failure_modes.py)
+- [Later model-review tests](test_model_review.py)
 
 ## References
 
-Gamma, E., Helm, R., Johnson, R. and Vlissides, J. (1994) *Design Patterns: Elements of Reusable Object-Oriented Software*. 1st edn. Addison-Wesley Professional. Available at https://www.pearson.com/en-gb/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480/9780201633610 (Accessed 13 October 2026).
+Gamma, E., Helm, R., Johnson, R. and Vlissides, J. (1994) *Design Patterns: Elements of Reusable Object-Oriented Software*. 1st edn. Addison-Wesley Professional. Available at https://www.pearson.com/en-gb/subject-catalog/p/design-patterns-elements-of-reusable-object-oriented-software/P200000009480/9780201633610 (Accessed 14 October 2026).
 
-Prechelt, L., Unger, B., Tichy, W.F., Brössler, P. and Votta, L.G. (2001) ‘A controlled experiment in maintenance: Comparing design patterns to simpler solutions’, *IEEE Transactions on Software Engineering*, 27(12), pp. 1134–1144. Available at https://doi.org/10.1109/32.988711 (Accessed 13 October 2026).
+Wang, R.Y. and Strong, D.M. (1996) ‘Beyond accuracy: What data quality means to data consumers’, *Journal of Management Information Systems*, 12(4), pp. 5–33. Available at https://doi.org/10.1080/07421222.1996.11518099 (Accessed 14 October 2026).
