@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="1532px" version="1.1" viewBox="0 0 2000 1532" width="2000px">
+  <defs/>
+  <rect fill="#FFFFFF" height="1532" width="2000" x="0" y="0"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="46" font-weight="bold" x="79" y="80">Feedback and Development</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="23" font-weight="normal" x="79" y="125">From assessment feedback and independent study to evidenced design judgement</text>
+  <line stroke="#2F5496" stroke-width="3" x1="79" x2="1921" y1="146" y2="146"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="19" font-weight="bold" x="80" y="188">FEEDBACK LOOP</text>
+  <rect fill="#FFFFFF" height="168" stroke="#CDD2D8" stroke-width="1.5" width="1840" x="80" y="205"/>
+  <line stroke="#CDD2D8" stroke-width="1" x1="693.3333333333334" x2="693.3333333333334" y1="205" y2="373"/>
+  <line stroke="#CDD2D8" stroke-width="1" x1="1306.6666666666667" x2="1306.6666666666667" y1="205" y2="373"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="22" font-weight="bold" x="102.0" y="239">The lecturer identified</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="102.0" y="274">Good concurrency design, with</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="102.0" y="302">stronger traceability and scalability</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="102.0" y="330">evaluation still needed</text>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="22" font-weight="bold" x="715.3333333333334" y="239">I investigated independently</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="715.3333333333334" y="274">Mapped the original 12 tests and</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="715.3333333333334" y="302">ran 60 contention trials across</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="715.3333333333334" y="330">different thread counts</text>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="22" font-weight="bold" x="1328.6666666666667" y="239">The evidence changed my claim</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1328.6666666666667" y="274">Balance correctness was supported,</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1328.6666666666667" y="302">but separate locks showed no</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1328.6666666666667" y="330">sustained performance advantage</text>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="21" font-weight="bold" x="80" y="418">LEARNING OUTCOME EVIDENCE MAP</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="17" font-weight="normal" x="1170" y="417">Observed results are distinct from proposed safeguards</text>
+  <rect fill="#F0F2F5" height="62" stroke="#CDD2D8" stroke-width="1" width="1840" x="80" y="437"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="21" font-weight="bold" x="98" y="477">Outcome and units</text>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="21" font-weight="bold" x="424" y="477">Independent learning input</text>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="21" font-weight="bold" x="937" y="477">Observed evidence</text>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="21" font-weight="bold" x="1451" y="477">Interpretation and boundary</text>
+  <rect fill="#FFFFFF" height="165" stroke="none" stroke-width="1" width="1840" x="80" y="499"/>
+  <rect fill="#2F5496" height="165" stroke="none" stroke-width="1" width="6" x="80" y="499"/>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="25" font-weight="bold" x="100" y="541">Secure coding</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="19" font-weight="normal" x="100" y="577">Units 6, 7, 12</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="541">Concurrency assessment and Unit 7</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="571">secure-coding study. Recording</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="601">failure cases revisited.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="541">12 original banking tests, a forced</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="571">£25 recording failure and seven</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="601">capstone integration tests.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="541">Protected balances do not provide</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="571">an authoritative audit trail. Atomic</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="601">recovery remains untested.</text>
+  <line stroke="#CDD2D8" stroke-width="1" x1="80" x2="1920" y1="664" y2="664"/>
+  <rect fill="#F6F7F8" height="165" stroke="none" stroke-width="1" width="1840" x="80" y="664"/>
+  <rect fill="#2F5496" height="165" stroke="none" stroke-width="1" width="6" x="80" y="664"/>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="25" font-weight="bold" x="100" y="706">Advanced OO</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="19" font-weight="normal" x="100" y="742">Units 1, 2, 8, 11</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="706">SOLID checkout formative work,</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="736">refactoring and dependency injection</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="766">studied and applied independently.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="706">Separated payment responsibilities.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="736">A boundary test corrected £16.9915</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="766">to £16.99, with seven tests passing.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="706">Substitution improved testability,</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="736">but six initial tests had missed the</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="766">financial boundary condition.</text>
+  <line stroke="#CDD2D8" stroke-width="1" x1="80" x2="1920" y1="829" y2="829"/>
+  <rect fill="#FFFFFF" height="165" stroke="none" stroke-width="1" width="1840" x="80" y="829"/>
+  <rect fill="#2F5496" height="165" stroke="none" stroke-width="1" width="6" x="80" y="829"/>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="25" font-weight="bold" x="100" y="871">Design patterns</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="19" font-weight="normal" x="100" y="907">Units 3, 4, 5, 11</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="871">Creational, structural and</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="901">behavioural readings informed four</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="931">banking pattern extensions.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="871">7 Strategy, 10 Decorator, 12 Visitor</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="901">and 13 Factory tests, supplemented</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="931">by recording failure investigations.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="871">Extension points aid change but</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="901">coordination and adapter costs</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="931">need their own justification.</text>
+  <line stroke="#CDD2D8" stroke-width="1" x1="80" x2="1920" y1="994" y2="994"/>
+  <rect fill="#F6F7F8" height="165" stroke="none" stroke-width="1" width="1840" x="80" y="994"/>
+  <rect fill="#2F5496" height="165" stroke="none" stroke-width="1" width="6" x="80" y="994"/>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="25" font-weight="bold" x="100" y="1036">Architecture</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="19" font-weight="normal" x="100" y="1072">Units 6, 9, 12</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="1036">Scalability feedback prompted</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="1066">contention trials. Unit 9 supplied</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="1096">architecture comparisons.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="1036">60 benchmark trials across 1–32</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="1066">threads; no sustained advantage</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="1096">for separate account locks.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="1036">Local correctness and timing</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="1066">cannot establish large-scale</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="1096">capacity or recoverability.</text>
+  <line stroke="#CDD2D8" stroke-width="1" x1="80" x2="1920" y1="1159" y2="1159"/>
+  <rect fill="#FFFFFF" height="165" stroke="none" stroke-width="1" width="1840" x="80" y="1159"/>
+  <rect fill="#2F5496" height="165" stroke="none" stroke-width="1" width="6" x="80" y="1159"/>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="25" font-weight="bold" x="100" y="1201">AI-ready design</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="19" font-weight="normal" x="100" y="1237">Units 10, 11, 12</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="1201">TDD, mocking, injection and AI</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="1231">ethics study informed a replaceable</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="424" y="1261">model-review boundary.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="1201">Nine mocked review tests and</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="1231">seven capstone tests. Substituted</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="937" y="1261">record amounts still passed checks.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="1201">Mock outputs do not establish</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="1231">live-model fairness or reliability.</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="normal" x="1451" y="1261">Independent evidence remains vital.</text>
+  <line stroke="#CDD2D8" stroke-width="1" x1="80" x2="1920" y1="1324" y2="1324"/>
+  <line stroke="#CDD2D8" stroke-width="1" x1="406" x2="406" y1="499" y2="1324"/>
+  <line stroke="#CDD2D8" stroke-width="1" x1="919" x2="919" y1="499" y2="1324"/>
+  <line stroke="#CDD2D8" stroke-width="1" x1="1433" x2="1433" y1="499" y2="1324"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="20" font-weight="bold" x="80" y="1359">UNIT PROGRESSION</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="17" font-weight="normal" x="1220" y="1359">Study themes are mapped to tested outputs where available</text>
+  <rect fill="#FFFFFF" height="96" stroke="#CDD2D8" stroke-width="1" width="460.0" x="80.0" y="1378"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="22" font-weight="bold" x="98.0" y="1412">01–03</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="16" font-weight="normal" x="98.0" y="1446">OO foundations  •  SOLID  •  creation</text>
+  <rect fill="#FFFFFF" height="96" stroke="#CDD2D8" stroke-width="1" width="460.0" x="540.0" y="1378"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="22" font-weight="bold" x="558.0" y="1412">04–06</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="16" font-weight="normal" x="558.0" y="1446">Structure  •  behaviour  •  concurrency</text>
+  <rect fill="#FFFFFF" height="96" stroke="#CDD2D8" stroke-width="1" width="460.0" x="1000.0" y="1378"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="22" font-weight="bold" x="1018.0" y="1412">07–09</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="16" font-weight="normal" x="1018.0" y="1446">Secure coding  •  refactoring  •  architecture</text>
+  <rect fill="#FFFFFF" height="96" stroke="#CDD2D8" stroke-width="1" width="460.0" x="1460.0" y="1378"/>
+  <text fill="#2F5496" font-family="Aptos, Calibri, Arial, sans-serif" font-size="22" font-weight="bold" x="1478.0" y="1412">10–12</text>
+  <text fill="#242933" font-family="Aptos, Calibri, Arial, sans-serif" font-size="16" font-weight="normal" x="1478.0" y="1446">Testing  •  injection  •  integration</text>
+  <text fill="#4F5864" font-family="Aptos, Calibri, Arial, sans-serif" font-size="17" font-weight="normal" x="80" y="1511">Recorded seminar guidance informed the reflective method. No group participation or production deployment is claimed.</text>
+</svg>
