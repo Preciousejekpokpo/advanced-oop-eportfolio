@@ -123,7 +123,7 @@ def main():
         writer.writeheader()
         writer.writerows(results)
 
-    print("\nMeasurements saved to contention_results.csv")
+    print("\nMeasurements saved to contention_results_extended.csv")
 
 
 if __name__ == "__main__":
