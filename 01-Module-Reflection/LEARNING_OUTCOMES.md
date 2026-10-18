@@ -10,7 +10,7 @@ The four pattern extensions exposed related trade-offs. [Strategy](../02-Coding-
 
 Unit 9's architecture case study made me question whether distributing responsibilities could improve reliability without coordinating updates and recovery. The [capstone](../05-Capstone-Project/CAPSTONE_EVALUATION.md) caught missing records that reconciliation overlooked, but substituted amounts still passed its record-count check. Barr et al. (2015) helped frame this as a test-oracle limitation. The [model-review tests](../03-Testing/MOCKING_AND_AI_TESTING.md) used dependency injection to examine nine mocked decisions, not live-model accuracy. Visitor supported aggregate financial analysis, but I did not evaluate efficiency in data-science workloads. Model Registry and Feature Store remained concepts for managing models and features, not implemented components. Tabassi (2023) reinforced the importance of trustworthy inputs and oversight.
 
-![Feedback and development evidence map](feedback_development_map.svg)
+![Feedback and development evidence map](Feedback%20and%20development%20evidence%20map.png)
 
 *Figure 1 connects the five learning outcomes with module study, lecturer feedback and tested artefacts. It distinguishes implemented evidence from conceptual learning and proposed safeguards.*
 
