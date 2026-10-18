@@ -6,7 +6,7 @@ Figure 1 turns these findings into practical goals. Boundary tests and repeatabl
 
 SFIA 9 informs these priorities without implying assessed competence (SFIA Foundation, 2024), while the BCS Code of Conduct guides professional accountability (BCS, n.d.). I will use the ISTQB Foundation Level syllabus to strengthen test design (ISTQB, 2024) and NIST's SSDF to guide secure development (NIST, 2022).
 
-![Figure 1. Professional development roadmap showing current evidence, identified gaps, actions, success measures and target dates](task4_professional_development_roadmap%20%283%29.png)
+![Figure 1. Professional development roadmap showing current strengths, development needs and planned actions](task4_professional_development_roadmap.png.png)
 
 I will review progress monthly against the roadmap's success measures. Reproducible results, recorded failures and responses to feedback matter more than meeting deadlines alone.
 
