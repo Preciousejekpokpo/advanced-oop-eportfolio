@@ -2,7 +2,7 @@
 
 ![Figure 3. Two related banking scenario configurations](abstract_factory_scenarios.png)
 
-Figure 3 illustrates how `ScenarioFactory` assembles two related banking configurations. `BalanceScenarioFactory` compares results with the scheduled workload, while `RecordedScenarioFactory` reconstructs movement from `RecordingAccount` (Gamma et al., 1994). Although both configurations assemble compatible components, they depend on evidence of different reliability. The diagram illustrates this architectural distinction, while subsequent tests examine its consequences.
+Figure 3 illustrates how `ScenarioFactory` assembles two related banking configurations. `BalanceScenarioFactory` compares results with the scheduled workload, while `RecordedScenarioFactory` reconstructs movement from `RecordingAccount` (Gamma et al., 1994). Although both configurations assemble compatible components, they depend on evidence of different reliability.
 
 Thirteen tests passed. Scenarios ended at £100 and £140, the latter with eight records. Controlled failures involving a missing £25 record and a second wrapper produced discrepancies, but the tests called `evaluate()` directly. They demonstrate detection under controlled conditions, not dependable recovery when a running scenario fails.
 
