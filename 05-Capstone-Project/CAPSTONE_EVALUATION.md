@@ -4,12 +4,13 @@ The capstone followed a weakness exposed during model-review testing, where an u
 
 Seven integration tests passed, bringing the reported banking suite to 72. The additional check detected two missing £25 records that reconciliation had overlooked, but when both amounts were replaced with £10, the count and net movement still matched, allowing mocked model review to proceed. The system could establish how many records existed without confirming that they represented the transactions performed. Barr et al. (2015) examine the test-oracle problem, which helped me understand why passing assertions did not necessarily provide sufficient evidence of correctness. 
 
-Recording failures remained more difficult because an exception could stop the workflow after a deposit had already changed the balance, leaving recovery unresolved. Although I would retain the record-count check as an additional safeguard, its usefulness depends on the reliability of the underlying records. Bringing balance changes and transaction records into the same database transaction, supported by failure and recovery testing, would provide a stronger basis for financial verification (PostgreSQL Global Development Group, n.d.). These improvements remain untested.
+Recording failures remained more difficult because an exception could stop the workflow after a deposit had already changed the balance, leaving recovery unresolved. Although I would retain the record-count check as an additional safeguard, its usefulness depends on the reliability of the underlying records. Bringing balance changes and transaction records into the same database transaction, supported by failure and recovery testing, would provide a stronger basis for financial verification (PostgreSQL Global Development Group, n.d.).
 
 ## Evidence
 
 - [Capstone workflow](../02-Coding-Exercises/BankAccount/capstone_workflow.py)
 - [Seven integration tests](../02-Coding-Exercises/BankAccount/test_capstone_workflow.py)
+- [Supplementary SQLite transaction and recovery experiment](SQLITE_RECOVERY_EVALUATION.md)
 
 ## References
 
