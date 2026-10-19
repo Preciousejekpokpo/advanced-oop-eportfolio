@@ -2,7 +2,7 @@
 
 Building the banking system demonstrated my ability to protect shared state, but later recording failures exposed weaknesses that correct balances could not reveal. I want to develop towards application security and software assurance, where reliability needs independently verifiable and recoverable evidence.
 
-Figure 1 turns these findings into practical goals. Boundary tests and repeatable contention trials precede a proposed SQLite prototype for atomic balance-and-record updates. Input-tracing exercises and external code reviews would then improve my evaluation of AI-related evidence and communication of design decisions. These are proposals, not implemented safeguards.
+Figure 1 turns these findings into practical goals. Boundary tests and repeatable contention trials preceded a tested standalone SQLite prototype for atomic balance-and-record updates. Input-tracing exercises and external code reviews would then improve my evaluation of AI-related evidence and communication of design decisions. Other safeguards remain proposals, not implemented controls.
 
 SFIA 9's PROG, TEST and SCTY skills provide benchmarks for software development, functional testing and information security, without implying independently assessed competence (SFIA Foundation, 2024). ISTQB (2024) informs my testing goals, NIST (2022) guides secure development, and the BCS Code of Conduct (BCS, n.d.) supports professional accountability.
 
