@@ -4,7 +4,7 @@ Building the banking system demonstrated my ability to protect shared state, but
 
 Figure 1 turns these findings into practical goals. Boundary tests and repeatable contention trials precede a proposed SQLite prototype for atomic balance-and-record updates. Input-tracing exercises and external code reviews would then improve my evaluation of AI-related evidence and communication of design decisions. These are proposals, not implemented safeguards.
 
-SFIA 9 informs these priorities without implying assessed competence (SFIA Foundation, 2024), while the BCS Code of Conduct guides professional accountability (BCS, n.d.). I will use the ISTQB Foundation Level syllabus to strengthen test design (ISTQB, 2024) and NIST's SSDF to guide secure development (NIST, 2022).
+SFIA 9's PROG, TEST and SCTY skills provide benchmarks for software development, functional testing and information security, without implying independently assessed competence (SFIA Foundation, 2024). ISTQB (2024) informs my testing goals, NIST (2022) guides secure development, and the BCS Code of Conduct (BCS, n.d.) supports professional accountability.
 
 ![Figure 1. Professional development roadmap showing current strengths, development needs and planned actions](task4_professional_development_roadmap.png.png)
 
